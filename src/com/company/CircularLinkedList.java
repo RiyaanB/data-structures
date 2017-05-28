@@ -73,9 +73,7 @@ public class CircularLinkedList<E> {
         pre.setNext(temp.getNext());
     }
 
-    public Node getLast() {
-        return last;
-    }
+    public Node getLast() {return last;}
 
     class Node {
         private E data;

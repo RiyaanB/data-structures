@@ -30,9 +30,7 @@ public class ArrayStack{
     {
         String s = "";
         for(int i = top; i >= 0;i--)
-        {
             s += stack[i] + " ";
-        }
         return s;
     }
 }
