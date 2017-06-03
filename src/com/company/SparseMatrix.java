@@ -111,7 +111,10 @@ public class SparseMatrix {
     public SparseMatrix multiply(SparseMatrix a)
     {
         SparseMatrix b = new SparseMatrix(new int[l.length][lenOfRow]);
-
+        for(int i = 0; i < l.length; i++)
+        {
+            
+        }
         return b;
     }
 }
