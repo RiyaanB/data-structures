@@ -33,4 +33,22 @@ public class Recursion
             return "0";
         return toBinary(num/2) + num % 2;
     }
+
+    public static boolean prime(int num,int c)
+    {
+        if(c == num)
+            return true;
+        else if(num % c == 0)
+            return false;
+        return prime(num,c+1);
+    }
+
+    public static int sumArr(int[] a, int i)
+    {
+        if(i == a.length)
+            return 0;
+        if(a[i] % 2 == 1)
+            return a[i] + sumArr(a,i+1);
+        return sumArr(a,i+1);
+    }
 }

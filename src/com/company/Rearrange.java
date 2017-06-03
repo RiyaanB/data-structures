@@ -50,7 +50,6 @@ public class Rearrange {
             else {
                 while(ops.size()!=0&&precedence(c)<=precedence(ops.peak()))
                 post += ops.pop();
-
                 ops.push(c);
             }
         }
@@ -76,7 +75,7 @@ public class Rearrange {
             return true;
         return false;
     }
-    public static int evalPost(String x)
+    public static int evalPostHashmap(String x)
     {
         HashMap<Character,Integer> vals = new HashMap<Character,Integer>();
         for(int i = 0; i < x.length(); i++)
@@ -111,5 +110,61 @@ public class Rearrange {
             }
         }
         return nums.pop();
+    }
+
+    public static int evalPost(String x)
+    {
+        Stack<Integer> nums = new Stack<Integer>();
+        for(int i = 0; i < x.length(); i++)
+        {
+            if(Character.isDigit(x.charAt(i)))
+            {
+                int temp = 0;
+                while(x.charAt(i) != '#')
+                {
+                    temp = (temp*10) + x.charAt(i) - 48;
+                    i++;
+                }
+                nums.push(temp);
+            }
+            else{
+                switch (x.charAt(i)) {
+                    case ('+'):
+                        nums.push(nums.pop() + nums.pop());
+                        break;
+                    case ('-'):
+                        nums.push(-nums.pop() + nums.pop());
+                        break;
+                    case ('*'):
+                        nums.push(nums.pop() * nums.pop());
+                        break;
+                    case ('/'):
+                        int t = nums.pop();
+                        nums.push(nums.pop() / t);
+                }
+            }
+        }
+        return nums.pop();
+    }
+
+    public static String postToIn(String x)
+    {
+        Stack<String> st = new Stack<String>();
+        for(int i = 0; i < x.length(); i++)
+        {
+            if(Character.isLetter(x.charAt(i))) {
+                st.push("" + x.charAt(i));
+            }
+            else {
+                String temp = st.pop();
+                st.push("(" + st.pop() + x.charAt(i) + temp + ")");
+            }
+        }
+        return st.pop();
+    }
+
+    public static String infToPre(String x)
+    {
+        return x;
     }
 }

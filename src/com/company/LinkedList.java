@@ -200,7 +200,6 @@ public class LinkedList
             try {
                 n.add(this.get(c));
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
