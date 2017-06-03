@@ -69,6 +69,11 @@ public class SparseMatrix {
             return n;
         }
     }
+
+
+
+
+
     SmLinkedList[] l;
     int lenOfRow;
     public SparseMatrix(int[][] m)
@@ -110,10 +115,11 @@ public class SparseMatrix {
 
     public SparseMatrix multiply(SparseMatrix a)
     {
+        //Homework
         SparseMatrix b = new SparseMatrix(new int[l.length][lenOfRow]);
         for(int i = 0; i < l.length; i++)
         {
-            
+            SmNode s = l[i].head;
         }
         return b;
     }

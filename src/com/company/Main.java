@@ -2,8 +2,15 @@ package com.company;
 
 public class Main {
     public static void main(String[] args){
-        ArrayMatrix a = new ArrayMatrix(new int[][]{{1,2,3},{4,5,6}});
-        ArrayMatrix b = new ArrayMatrix(new int[][]{{1,2},{3,4,},{5,6}});
-        System.out.println(a.add(b));
+        MinHeap m = new MinHeap(9);
+        m.add(2);
+        m.add(3);
+        m.add(4);
+        m.add(1);
+        System.out.println(m);
+        m.remove();
+        System.out.println(m);
+        m.add(5);
+        System.out.println(m);
     }
 }
