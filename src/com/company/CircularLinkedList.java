@@ -2,7 +2,6 @@ package com.company;
 
 public class CircularLinkedList<E> {
     private Node last;
-
     public void add(E val) {
         Node newnode = new Node();
         newnode.setData(val);
@@ -15,7 +14,6 @@ public class CircularLinkedList<E> {
         last.setNext(newnode);
         last = newnode;
     }
-
     public String toString() {
         if (last == null)
             return "null";
@@ -28,7 +26,6 @@ public class CircularLinkedList<E> {
         while (temp != last.getNext());
         return s;
     }
-
     public int count() {
         if (last == null) {
             return 0;
@@ -42,7 +39,6 @@ public class CircularLinkedList<E> {
         while (temp != last.getNext());
         return c;
     }
-
     public E get(int index) {
         if (last == null)
             throw new ArrayIndexOutOfBoundsException();
@@ -54,7 +50,6 @@ public class CircularLinkedList<E> {
         }
         return temp.getData();
     }
-
     public void remove(int index) {
         if (last == null || index < 0)
             throw new ArrayIndexOutOfBoundsException();
@@ -72,9 +67,9 @@ public class CircularLinkedList<E> {
         }
         pre.setNext(temp.getNext());
     }
-
-    public Node getLast() {return last;}
-
+    public Node getLast() {
+        return last;
+    }
     class Node {
         private E data;
         private Node next;
@@ -82,15 +77,12 @@ public class CircularLinkedList<E> {
         public E getData() {
             return data;
         }
-
         public void setData(E data) {
             this.data = data;
         }
-
         public Node getNext() {
             return next;
         }
-
         public void setNext(Node next) {
             this.next = next;
         }
