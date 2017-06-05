@@ -3,58 +3,57 @@ package com.company;
 public class MinArrayHeap {
     int len;
     int[] vals;
-    public MinArrayHeap(int max)
-    {
+
+    public MinArrayHeap(int max) {
         vals = new int[max];
         len = 0;
     }
 
-    public boolean add(int num)
-    {
-        if(vals.length == len)
+    public boolean add(int num) {
+        if (vals.length == len)
             return false;
-        int t = len;
-        while(true) {
-            if(vals[(t-1)/2] > num)
-            {
-                vals[t] = vals[(t-1)/2];
-                vals[(t-1)/2] = num;
-                t = (t-1)/2;
-                if(t == 0)
-                    break;
-            }
-            else {
-                vals[t] = num;
+        int t = len++;
+        while (true) {
+            if (t > 0 && vals[(t - 1) / 2] > num) {
+                vals[t] = vals[(t - 1) / 2];
+                t = (t - 1) / 2;
+            } else {
                 break;
             }
         }
-        len++;
+        vals[t] = num;
         return true;
     }
 
     public int remove() {
-        if (len-- == 0)
+        if (len == 0)
             throw new ArrayIndexOutOfBoundsException();
+        len--;
         int temp = vals[0];
-        int c = 0;
-        while(c < len) {
-            if((2*c + 2 > len) || vals[(2*c)+1] < vals[(2*c)+2]) {
-                vals[c] = vals[(2*c)+1];
-                c = 2*c + 1;
-            }
-            else{
-                vals[c] = vals[(2*c)+2];
-                c = 2*c + 2;
-            }
-        }
-        return temp;
+        int returnData = vals[len];
+        int c = 1;
+        while (c < len) {
+            if (c + 1 < len && vals[c] > vals[c + 1])
+                c++;
+            if (returnData > vals[c])
+                vals[(c - 1) / 2] = vals[c];
+            else
+                break;
 
+
+            c = c * 2 + 1;
+        }
+        vals[(c - 1) / 2] = returnData;
+        return temp;
     }
-    public String toString()
-    {
+    public boolean isEmpty() {
+        return len == 0;
+    }
+
+    public String toString() {
         String s = "";
-        for(int i: vals)
-            s += i + " ";
+        for (int i = 0; i < len; i++)
+            s += vals[i] + " ";
         return s;
     }
 }
