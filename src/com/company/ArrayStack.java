@@ -1,5 +1,4 @@
 package com.company;
-
 public class ArrayStack{
     int[] stack;
     int top;
