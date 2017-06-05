@@ -12,7 +12,6 @@ public class CircularQueue {
         rear = -1;
         front = -1;
     }
-
     public boolean insert(int data){
         if(count == queue.length)
             return false;
@@ -20,7 +19,6 @@ public class CircularQueue {
         queue[++rear] = data;
         return true;
     }
-
     public int delete()
     {
         count--;
