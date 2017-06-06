@@ -25,74 +25,65 @@ public class Rearrange {
         return -1;
     }
 
-    public static String postfix(String x)
-    {
-        if(!balanced(x))
+    public static String postfix(String x) {
+        if (!balanced(x))
             throw new ArithmeticException();
         String post = "";
         Stack<Character> ops = new Stack<Character>();
-        for(int i = 0; i < x.length(); i++)
-        {
+        for (int i = 0; i < x.length(); i++) {
             char c = x.charAt(i);
-            if(precedence(c) == -1)
+            if (precedence(c) == -1)
                 post += c;
-            else if(precedence(c) == 0)
-            {
-                while (!ops.peak().equals('('))
-                {
+            else if (precedence(c) == 0) {
+                while (!ops.peak().equals('(')) {
                     post += ops.pop();
                 }
                 ops.pop();
-            }
-            else if (ops.size() == 0||c=='('||precedence(ops.peak()) < precedence(c))
+            } else if (ops.size() == 0 || c == '(' || precedence(ops.peak()) < precedence(c))
                 ops.push(c);
 
             else {
-                while(ops.size()!=0&&precedence(c)<=precedence(ops.peak()))
-                post += ops.pop();
+                while (ops.size() != 0 && precedence(c) <= precedence(ops.peak()))
+                    post += ops.pop();
                 ops.push(c);
             }
         }
-        while(ops.size()!=0)
-            post+=ops.pop();
+        while (ops.size() != 0)
+            post += ops.pop();
 
         return post;
     }
 
-    public static boolean balanced(String x)
-    {
+    public static boolean balanced(String x) {
         int c = 0;
-        for(int i = 0; i < x.length(); i++)
-        {
+        for (int i = 0; i < x.length(); i++) {
             if (x.charAt(i) == '(')
                 c++;
-            else if(x.charAt(i) == ')')
+            else if (x.charAt(i) == ')')
                 c--;
-            if(c < 0)
+            if (c < 0)
                 return false;
         }
         if (c == 0)
             return true;
         return false;
     }
-    public static int evalPostHashmap(String x)
-    {
-        HashMap<Character,Integer> vals = new HashMap<Character,Integer>();
-        for(int i = 0; i < x.length(); i++)
-        {
-            if(!vals.containsKey(x.charAt(i)) && precedence(x.charAt(i)) == -1) {
+
+    public static int evalPostHashmap(String x) {
+        HashMap<Character, Integer> vals = new HashMap<Character, Integer>();
+        for (int i = 0; i < x.length(); i++) {
+            if (!vals.containsKey(x.charAt(i)) && precedence(x.charAt(i)) == -1) {
                 System.out.print("Enter value for " + x.charAt(i) + ": ");
-                vals.put(x.charAt(i),sc.nextInt());
+                vals.put(x.charAt(i), sc.nextInt());
             }
         }
         Stack<Integer> nums = new Stack<Integer>();
 
-        for(int i = 0; i < x.length(); i++)
-        {
+        for (int i = 0; i < x.length(); i++) {
             if (Character.isLetter(x.charAt(i)))
                 nums.push(vals.get(x.charAt(i)));
-            else if(Character.isDigit(x.charAt(i)))
-                nums.push(x.charAt(i)-48);
+            else if (Character.isDigit(x.charAt(i)))
+                nums.push(x.charAt(i) - 48);
             else {
                 switch (x.charAt(i)) {
                     case ('+'):
@@ -105,29 +96,25 @@ public class Rearrange {
                         nums.push(nums.pop() * nums.pop());
                         break;
                     case ('/'):
-                        nums.push(nums.pop() / nums.pop());
+                        int num = nums.pop();
+                        nums.push(num / nums.pop());
                 }
             }
         }
         return nums.pop();
     }
 
-    public static int evalPost(String x)
-    {
+    public static int evalPost(String x) {
         Stack<Integer> nums = new Stack<Integer>();
-        for(int i = 0; i < x.length(); i++)
-        {
-            if(Character.isDigit(x.charAt(i)))
-            {
+        for (int i = 0; i < x.length(); i++) {
+            if (Character.isDigit(x.charAt(i))) {
                 int temp = 0;
-                while(x.charAt(i) != '#')
-                {
-                    temp = (temp*10) + x.charAt(i) - 48;
+                while (x.charAt(i) != '#') {
+                    temp = (temp * 10) + x.charAt(i) - 48;
                     i++;
                 }
                 nums.push(temp);
-            }
-            else{
+            } else {
                 switch (x.charAt(i)) {
                     case ('+'):
                         nums.push(nums.pop() + nums.pop());
@@ -147,15 +134,12 @@ public class Rearrange {
         return nums.pop();
     }
 
-    public static String postToIn(String x)
-    {
+    public static String postToIn(String x) {
         Stack<String> st = new Stack<String>();
-        for(int i = 0; i < x.length(); i++)
-        {
-            if(Character.isLetter(x.charAt(i))) {
+        for (int i = 0; i < x.length(); i++) {
+            if (Character.isLetter(x.charAt(i))) {
                 st.push("" + x.charAt(i));
-            }
-            else {
+            } else {
                 String temp = st.pop();
                 st.push("(" + st.pop() + x.charAt(i) + temp + ")");
             }
@@ -163,8 +147,46 @@ public class Rearrange {
         return st.pop();
     }
 
-    public static String infToPre(String x)
-    {
-        return x;
+    public static String infToPre(String x) {
+        String s = "";
+        for (int i = 0; i < x.length(); i++) {
+            x.charAt(i);
+        }
+        return s;
+    }
+    public static String recPostToPre2(String x){return x;}
+    public static String recPostToPre(String x) {
+        return recPostToPre(x, 0);
+    }
+    private static String recPostToPre(String x, int i) {
+        if (Character.isLetter(x.charAt(i)) || Character.isDigit(x.charAt(i)))
+            return x.charAt(i) + "";
+        else {
+            String operand1 = recPostToPre(x, i + 1);
+            return operand1 + recPostToPre(x, i + operand1.length() + 1) + x.charAt(i);
+        }
+    }
+
+    public static int evaluate(String x) {
+        if(x.isEmpty())
+            return 0;
+        if (Character.isDigit(x.charAt(0)))
+            return x.charAt(0) - 48;
+        char op = x.charAt(0);
+        x = x.substring(1);
+        int op1 = evaluate(x);
+        x = x.substring(1);
+        int op2 = evaluate(x);
+        switch (op) {
+            case ('+'):
+                return op1 + op2;
+            case ('-'):
+                return op1 - op2;
+            case ('/'):
+                return op1 / op2;
+            case ('*'):
+                return op1 * op2;
+        }
+        return 0;
     }
 }

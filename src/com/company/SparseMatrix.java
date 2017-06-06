@@ -70,10 +70,6 @@ public class SparseMatrix {
         }
     }
 
-
-
-
-
     SmLinkedList[] l;
     int lenOfRow;
     public SparseMatrix(int[][] m)
@@ -103,7 +99,6 @@ public class SparseMatrix {
         }
         return i;
     }
-
     public SparseMatrix add(SparseMatrix b){
         SparseMatrix n = new SparseMatrix(l.length);
         for(int i = 0; i < l.length; i++)
@@ -112,9 +107,7 @@ public class SparseMatrix {
         }
         return n;
     }
-
-    public SparseMatrix multiply(SparseMatrix a)
-    {
+    public SparseMatrix multiply(SparseMatrix a) {
         SparseMatrix b = new SparseMatrix(new int[l.length][lenOfRow]);
         for(int i = 0; i < l.length; i++)
         {

@@ -39,8 +39,6 @@ public class MinArrayHeap {
                 vals[(c - 1) / 2] = vals[c];
             else
                 break;
-
-
             c = c * 2 + 1;
         }
         vals[(c - 1) / 2] = returnData;
