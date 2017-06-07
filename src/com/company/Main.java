@@ -15,6 +15,7 @@ public class Main {
         b.insert(65);
         b.insert(80);
         b.insert(75);
+        b.remove(20);
         System.out.println(b);
     }
 }

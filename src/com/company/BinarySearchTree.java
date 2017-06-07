@@ -73,11 +73,15 @@ public class BinarySearchTree {
         return n.data;
     }
     public boolean remove(int data){
-        Node n = root;
+        Node n = root,prev = root;
         while(n.data != data){
             if (n == null)
                 return false;
-            n = data > n.data ? n.left : n.right;
+            prev = n;
+            n = data < n.data ? n.left : n.right;
+        }
+        if(n.right == null){
+
         }
         Node n2 = n.right, prev = n;
         while(n2.left != null){
@@ -89,10 +93,17 @@ public class BinarySearchTree {
     }
 
     public void inOrder(){
-
+        inOrder(root);
+    }
+    private void inOrder(Node parent){
+        if (parent == null)
+            return;
+        inOrder(parent.left);
+        System.out.println(parent.data);
+        inOrder(parent.right);
     }
     public String toString(){
-        preOrder();
+        inOrder();
         return "";
     }
 }
