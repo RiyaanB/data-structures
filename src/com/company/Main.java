@@ -2,7 +2,7 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-        ExpressionTree e = new ExpressionTree("/*+34-52+6*35");
-        System.out.println(e.evaluate());
+        int[] a = new int[] {8,5,4,3,7,2,6,9,1};
+        Sorting.ShellInsertion(a);
     }
 }
