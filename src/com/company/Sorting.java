@@ -110,22 +110,85 @@ public class Sorting {
         quickSort(x,0,x.length-1);
     }
     private static void quickSort(int[] x, int start, int end){
+        if(start >=end)
+            return;
         int pivot = x[start];
-        int left = start;
+        int left = start+1;
         int right = end;
         while(left <= right){
             while(x[left] < pivot)
                 left++;
             while (x[right] > pivot)
                 right--;
-            if(left <= right){
+            if(left < right){
                 int temp = x[left];
                 x[left] = x[right];
                 x[right] = temp;
                 left++;
                 right--;
             }
+            else
+            {
+                x[start]=x[right];
+                x[right]=pivot;
+                break;
+            }
         }
-        
+        quickSort(x,start,right-1);
+        quickSort(x,right+1,end);
+    }
+
+    public static void bucketSort(int[] x){
+        int maxLength = -1;
+        for(int y:x){
+            int c = length(y);
+            maxLength = maxLength > c ? maxLength : c;
+        }
+        Node[] buckets = new Node[maxLength];
+        for(int y:x){
+            Node n = buckets[length(y)-1];
+            if(n == null)
+                buckets[length(y)-1] = new Node(y);
+            else if(n.data > y){
+                buckets[length(y)] = new Node(y);
+                buckets[length(y)].next = n;
+            }
+            else{
+                while(n.next != null){
+                    if(n.next.data > y){
+                       Node p = new Node(y);
+                       p.next = n.next;
+                       n.next = p;
+                       break;
+                    }
+                    n = n.next;
+                }
+                if(n == null)
+                    n.next = new Node(y);
+            }
+        }
+        int c = 0;
+        for(int i = 0; i < buckets.length; i++){
+            Node n = buckets[i];
+            while(n != null){
+                x[c++] = n.data;
+            }
+        }
+    }
+    private static int length(int x){
+        int c = 0;
+        while(x != 0){
+            x /= 10;
+            c++;
+        }
+        return c;
+    }
+}
+
+class Node{
+    Node next;
+    int data;
+    public Node(int d) {
+        data = d;
     }
 }
