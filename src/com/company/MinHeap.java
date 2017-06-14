@@ -24,8 +24,7 @@ public class MinHeap {
         insert(data,root);
     }
 
-    private Node insert(int data, Node r)
-    {
+    private Node insert(int data, Node r) {
         if (r == null)
         {
             return new Node(data);

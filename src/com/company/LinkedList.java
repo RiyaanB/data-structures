@@ -319,9 +319,7 @@ public class LinkedList
                     temp.getNext().setData(t);
 
                 }
-
                 temp = temp.getNext();
-
             }
         }
     }
