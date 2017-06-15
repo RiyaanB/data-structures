@@ -150,8 +150,8 @@ public class Sorting {
             if(n == null)
                 buckets[length(y)-1] = new Node(y);
             else if(n.data > y){
-                buckets[length(y)] = new Node(y);
-                buckets[length(y)].next = n;
+                buckets[length(y)-1] = new Node(y);
+                buckets[length(y)-1].next = n;
             }
             else{
                 while(n.next != null){
@@ -163,7 +163,7 @@ public class Sorting {
                     }
                     n = n.next;
                 }
-                if(n == null)
+                if(n.next == null)
                     n.next = new Node(y);
             }
         }
@@ -172,6 +172,7 @@ public class Sorting {
             Node n = buckets[i];
             while(n != null){
                 x[c++] = n.data;
+                n = n.next;
             }
         }
     }

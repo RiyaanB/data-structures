@@ -31,4 +31,7 @@ public class Queue<E>
             rear = null;
         return temp.data;
     }
+    public boolean isEmpty(){
+        return front == null && rear == null;
+    }
 }
