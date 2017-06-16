@@ -138,6 +138,15 @@ public class Sorting {
         quickSort(x,right+1,end);
     }
 
+
+    static class Node{
+        Node next;
+        int data;
+        public Node(int d) {
+            data = d;
+        }
+    }
+
     public static void bucketSort(int[] x){
         int maxLength = -1;
         for(int y:x){
@@ -183,13 +192,5 @@ public class Sorting {
             c++;
         }
         return c;
-    }
-}
-
-class Node{
-    Node next;
-    int data;
-    public Node(int d) {
-        data = d;
     }
 }
