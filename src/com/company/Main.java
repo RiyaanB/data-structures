@@ -23,11 +23,11 @@ public class Main {
         g.setAdj(5,4,5);
         g.setAdj(5,6,3);
         g.setAdj(6,0,2);
-        g.setAdj(6,0,3);
+        g.setAdj(6,1,3);
         g.setAdj(6,2,9);
         g.setAdj(6,3,6);
         g.setAdj(6,4,7);
         g.setAdj(6,5,3);
-        g.prims();
+        g.dijkstra(0);
     }
 }
