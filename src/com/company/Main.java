@@ -10,7 +10,6 @@ public class Main {
         g.setAdj(1,2,7);
         g.setAdj(1,6,3);
         g.setAdj(2,1,7);
-        g.setAdj(2,4,8);
         g.setAdj(2,5,2);
         g.setAdj(2,6,9);
         g.setAdj(3,0,5);

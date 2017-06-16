@@ -77,7 +77,6 @@ public class WeightedGraph{
             }
             start = minLoc;
             settled[minLoc] = true;
-            System.out.println(start);
         }
         for (int i : distance)
             System.out.print(i + " ");
@@ -118,7 +117,6 @@ public class WeightedGraph{
             }
             start = minLoc;
             settled[minLoc] = true;
-            System.out.println(start);
         }
         for (int i : distance)
             System.out.print(i + " ");
