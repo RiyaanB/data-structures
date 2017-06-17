@@ -3,7 +3,7 @@ package com.company;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class WeightedGraph{
+public class WeightedGraph extends Graph{
     int[][] adj;
     final static int INF=10000;
     public WeightedGraph(int n){
