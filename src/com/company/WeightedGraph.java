@@ -125,4 +125,42 @@ public class WeightedGraph{
             System.out.print(i + " ");
         System.out.println();
     }
+
+    public void kruskal(){
+        int i = 0;
+        for(int row = 0; row < adj.length; row++){
+            for(int col = row + 1; col < adj.length;){
+                if(adj[row][col] != INF)
+                    i++;
+            }
+        }
+        int[] sources = new int[i];
+        int[] destinations = new int[i];
+        int[] weights = new int[i];
+        i = 0;
+        for(int row = 0; row < adj.length; row++){
+            for(int col = row + 1; col < adj.length; col++){
+                if(adj[row][col] != INF){
+                    sources[i] = row;
+                    destinations[i] = col;
+                    weights[i] = adj[row][col];
+                    i++;
+                }
+            }
+        }
+        for (i = 0; i < weights.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < weights.length; j++)
+                minIndex = weights[minIndex] < weights[j] ? minIndex : j;
+            int temp = weights[minIndex];
+            weights[minIndex] = weights[i];
+            weights[i] = temp;
+            temp = sources[minIndex];
+            sources[minIndex] = sources[i];
+            sources[i] = temp;
+            temp = destinations[minIndex];
+            destinations[minIndex] = destinations[i];
+            destinations[i] = temp;
+        }
+    }
 }
