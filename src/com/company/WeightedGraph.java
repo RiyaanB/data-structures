@@ -162,5 +162,7 @@ public class WeightedGraph extends Graph{
             destinations[minIndex] = destinations[i];
             destinations[i] = temp;
         }
+        boolean[] include = new boolean[sources.length];
+        
     }
 }
