@@ -27,6 +27,6 @@ public class Main {
         g.setAdj(6,3,6);
         g.setAdj(6,4,7);
         g.setAdj(6,5,3);
-        g.dijkstra(0);
+        g.kruskal();
     }
 }

@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class WeightedGraph extends Graph{
@@ -129,7 +128,7 @@ public class WeightedGraph extends Graph{
     public void kruskal(){
         int i = 0;
         for(int row = 0; row < adj.length; row++){
-            for(int col = row + 1; col < adj.length;){
+            for(int col = row + 1; col < adj.length; col++){
                 if(adj[row][col] != INF)
                     i++;
             }
