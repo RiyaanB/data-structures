@@ -18,7 +18,6 @@ public class LinkedList
             this.next = next;
         }
     }
-
     private Node first;
     public boolean add(int value)
     {
