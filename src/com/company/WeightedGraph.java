@@ -163,6 +163,17 @@ public class WeightedGraph extends Graph{
             destinations[i] = temp;
         }
         boolean[] include = new boolean[sources.length];
-        
+        boolean[] visited = new boolean[sources.length];
+        visited[0] = true;
+        for(i = 0; i < sources.length; i++){
+            if(!visited[sources[i]] || !visited[destinations[i]]){
+                include[i] = true;
+                visited[sources[i]] = true;
+                visited[destinations[i]] = true;
+            }
+        }
+        for(int c = 0; c < visited.length; c++)
+            if(include[c])
+                System.out.println(sources[c] + " " + destinations[c] + " : "  + weights[c]);
     }
 }
