@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class WeightedGraph extends Graph{
     int[][] adj;
-    final static int INF=10000;
+    final static int INF = 10000;
     public WeightedGraph(int n){
         adj = new int[n][n];
         for(int i = 0; i < n; i++){
