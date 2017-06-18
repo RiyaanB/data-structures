@@ -175,4 +175,8 @@ public class WeightedGraph extends Graph{
             if(include[c])
                 System.out.println(sources[c] + " " + destinations[c] + " : "  + weights[c]);
     }
+
+    public void search(){
+
+    }
 }

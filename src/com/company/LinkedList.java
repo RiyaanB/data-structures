@@ -2,8 +2,7 @@ package com.company;
 
 public class LinkedList
 {
-    class Node
-    {
+    class Node {
         private int data;
         private Node next;
         public int getData() {
@@ -253,8 +252,7 @@ public class LinkedList
         }
         return n;
     }
-    public Node getFirst()
-    {
+    public Node getFirst() {
         return first;
     }
     public boolean isSorted()

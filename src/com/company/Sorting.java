@@ -1,14 +1,11 @@
 package com.company;
 
-import java.util.Arrays;
-
 public class Sorting {
     public static void print(int[] x) {
         for (int i : x)
             System.out.print(i + " ");
         System.out.println();
     }
-
     public static void StraightInsertion(int[] x) {
         for (int i = 1; i < x.length; i++) {
             int h = x[i], j = i;
@@ -18,7 +15,6 @@ public class Sorting {
             x[j] = h;
         }
     }
-
     public static void ShellInsertion(int[] x) {
         for (int pow = x.length / 2; pow > 0; pow /= 2) {
             for (int i = pow; i < x.length; i++) {
@@ -31,7 +27,6 @@ public class Sorting {
             }
         }
     }
-
     public static void StraightSelection(int[] x) {
         for (int i = 0; i < x.length - 1; i++) {
             int minIndex = i;
@@ -42,9 +37,7 @@ public class Sorting {
             x[i] = temp;
         }
     }
-
     public static void HeapSort(int[] x) {
-
         for (int i = x.length / 2 - 1; i >= 0; i--)
             settle(x, i, x.length);
 
@@ -55,7 +48,6 @@ public class Sorting {
             settle(x, 0, i);
         }
     }
-
     private static void settle(int[] x, int i, int n) {
         int tosettle = x[i];
         for (i = 2 * i + 1; i < n; i = 2 * i + 1) {
@@ -68,7 +60,6 @@ public class Sorting {
         }
         x[(i - 1) / 2] = tosettle;
     }
-
     public static void radixSort(int[] arr) {
         int m = arr[0];
         for(int i = 1; i < arr.length; i++){
@@ -89,7 +80,6 @@ public class Sorting {
                 arr[i] = output[i];
         }
     }
-
     public static void bubbleSort(int[] x){
         for(int i = 0; i < x.length - 1; i++){
             boolean sorted = true;
@@ -105,7 +95,6 @@ public class Sorting {
                 break;
         }
     }
-
     public static void quickSort(int[] x){
         quickSort(x,0,x.length-1);
     }
@@ -129,16 +118,14 @@ public class Sorting {
             }
             else
             {
-                x[start]=x[right];
-                x[right]=pivot;
+                x[start] = x[right];
+                x[right] = pivot;
                 break;
             }
         }
         quickSort(x,start,right-1);
         quickSort(x,right+1,end);
     }
-
-
     static class Node{
         Node next;
         int data;
