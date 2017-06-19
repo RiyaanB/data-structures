@@ -97,4 +97,7 @@ public class Searching {
         }
         return hashtable;
     }
+    public static boolean quadraticProbing(int[] hashtable, int x){
+        return false;
+    }
 }
