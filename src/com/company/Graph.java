@@ -2,6 +2,7 @@ package com.company;
 
 public class Graph {
     boolean[][] adj;
+    public Graph(){}
     public Graph(int n){
         adj = new boolean[n][n];
     }
